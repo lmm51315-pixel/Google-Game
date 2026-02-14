@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.game-container {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.score {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 100;
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 100;
+    display: none;
+}
+
+.game-over h2 {
+    margin-bottom: 10px;
+}
+
+.game-over button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.game-over button:hover {
+    background-color: #45a049;
+}
+
+.start-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 99;
+}
+
+.start-screen h2 {
+    margin-bottom: 10px;
+}
+
+.game {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #87CEEB;
+    overflow: hidden;
+}
+
+.game:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><circle cx="50" cy="50" r="30" fill="white" opacity="0.6"/><circle cx="150" cy="80" r="40" fill="white" opacity="0.6"/><circle cx="80" cy="150" r="25" fill="white" opacity="0.6"/></svg>');
+    background-size: 400px 400px;
+    animation: clouds 80s linear infinite;
+}
+
+.game:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="20" ry="10" fill="none" stroke="white" stroke-width="1" opacity="0.3"/></svg>');
+    background-size: 150px 150px;
+}
+
+@keyframes clouds {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1200px 0;
+    }
+}
+
+.pony {
+    position: absolute;
+    bottom: 60px;
+    left: 50px;
+    width: 100px;
+    height: 80px;
+    transition: bottom 0.3s ease;
+    z-index: 10;
+}
+
+/* 像素风格马 - 马头向右 */
+.pony .pixel-body {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    width: 55px;
+    height: 35px;
+    background-color: #9370DB;
+}
+
+/* 头部 */
+.pony .pixel-head {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 40px;
+    height: 35px;
+}
+
+/* 头部像素块 */
+.pony .pixel-head .head-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35px;
+    height: 15px;
+    background-color: #6A5ACD;
+}
+
+.pony .pixel-head .head-mid {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 40px;
+    height: 15px;
+    background-color: #9370DB;
+}
+
+.pony .pixel-head .head-bottom {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 35px;
+    height: 5px;
+    background-color: #9370DB;
+}
+
+/* 眼睛 */
+.pony .pixel-head .eye {
+    position: absolute;
+    top: 18px;
+    right: 25px;
+    width: 8px;
+    height: 8px;
+    background-color: black;
+    border-radius: 2px;
+}
+
+/* 鼻子 */
+.pony .pixel-head .nose {
+    position: absolute;
+    top: 25px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* 鬃毛 */
+.pony .pixel-mane {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    width: 20px;
+    height: 25px;
+}
+
+.pony .pixel-mane .mane-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 8px;
+    background-color: #DC143C;
+}
+
+.pony .pixel-mane .mane-mid {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    width: 18px;
+    height: 12px;
+    background-color: #6A5ACD;
+}
+
+.pony .pixel-mane .mane-bottom {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 15px;
+    height: 5px;
+    background-color: #6A5ACD;
+}
+
+/* 颈部 */
+.pony .pixel-neck {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    width: 15px;
+    height: 20px;
+    background-color: #9370DB;
+}
+
+/* 腿部 */
+.pony .pixel-leg {
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 25px;
+    background-color: #9370DB;
+}
+
+.pony .pixel-leg.front-left {
+    left: 25px;
+}
+
+.pony .pixel-leg.front-right {
+    left: 40px;
+}
+
+.pony .pixel-leg.back-left {
+    left: 55px;
+}
+
+.pony .pixel-leg.back-right {
+    left: 70px;
+}
+
+/* 马蹄 */
+.pony .pixel-leg:before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 1.5px;
+    width: 7px;
+    height: 7px;
+    background-color: #2F4F4F;
+}
+
+/* 尾巴 */
+.pony .pixel-tail {
+    position: absolute;
+    bottom: 20px;
+    left: 5px;
+    width: 20px;
+    height: 25px;
+}
+
+.pony .pixel-tail .tail-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 8px;
+    background-color: #6A5ACD;
+}
+
+.pony .pixel-tail .tail-mid {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 18px;
+    height: 12px;
+    background-color: #DC143C;
+}
+
+.pony .pixel-tail .tail-bottom {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 20px;
+    height: 5px;
+    background-color: #6A5ACD;
+}
+
+/* 可爱标记 */
+.pony .pixel-cutie {
+    position: absolute;
+    bottom: 25px;
+    left: 45px;
+    width: 15px;
+    height: 15px;
+    background-color: #DC143C;
+    border-radius: 2px;
+}
+
+.pony.jump {
+    animation: jump 1.2s linear;
+}
+
+@keyframes jump {
+    0% {
+        bottom: 60px;
+    }
+    41.67% {
+        bottom: 250px;
+    }
+    58.33% {
+        bottom: 250px;
+    }
+    100% {
+        bottom: 60px;
+    }
+}
+
+.ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 400%;
+    height: 60px;
+    background-color: #90EE90;
+    background-image: 
+        linear-gradient(90deg, transparent 0%, transparent 50%, #7CCD7C 50%, #7CCD7C 100%);
+    background-size: 40px 100%;
+    animation: ground 4s linear infinite;
+}
+
+.ground:before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 200%;
+    height: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 40 20"><path d="M0,20 Q5,10 10,20 Q15,10 20,20 Q25,10 30,20 Q35,10 40,20 Z" fill="%232E8B57"/></svg>');
+    background-size: 40px 20px;
+    animation: grass 2s linear infinite;
+}
+
+@keyframes grass {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-40px);
+    }
+}
+
+@keyframes ground {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -40px;
+    }
+}
+
+.obstacle {
+    position: absolute;
+    bottom: 60px;
+    width: 40px;
+    height: 40px;
+    z-index: 5;
+}
+
+.obstacle .fence-post {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 8px;
+    height: 40px;
+    background-color: #8B4513;
+}
+
+.obstacle .fence-post.right {
+    left: 32px;
+}
+
+.obstacle .fence-rail {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background-color: #8B4513;
+}
+
+.obstacle .fence-rail.top {
+    bottom: 30px;
+}
+
+@keyframes obstacle {
+    0% {
+        right: -40px;
+    }
+    100% {
+        right: 800px;
+    }
+}

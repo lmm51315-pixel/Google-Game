@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pony Run Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="game-over" id="gameOver">
+            <h2>Game Over</h2>
+            <p>Score: <span id="finalScore">0</span></p>
+            <button onclick="restartGame()">Restart</button>
+        </div>
+        <div class="start-screen" id="startScreen">
+            <h2>Pony Run</h2>
+            <p>Press Space or Click to Start</p>
+        </div>
+        <div class="game">
+            <div class="pony" id="pony"></div>
+            <div class="ground" id="ground"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
